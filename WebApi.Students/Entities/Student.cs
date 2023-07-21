@@ -4,6 +4,8 @@ namespace Students.Entities
 {
     public sealed class Student : EntityBase
     {
+        private Student() { }
+
         public Student(Perfil perfil, Email email, Address address)
         {
             Perfil = perfil;

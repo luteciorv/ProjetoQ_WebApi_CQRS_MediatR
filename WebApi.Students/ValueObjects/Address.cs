@@ -1,4 +1,4 @@
 ﻿namespace Students.ValueObjects
 {
-    public record Address(string Country, string zipCode, string City, string Street, string Number);
+    public record Address(string Country, string City, string State, string ZipCode, string Street, string Number);
 }
