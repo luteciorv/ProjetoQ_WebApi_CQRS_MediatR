@@ -2,10 +2,11 @@
 
 namespace Students.CQRS.Commands
 {
-    public class CreateStudentCommand : IRequest
+    public class UpdateStudentCommand : IRequest
     {
-        public CreateStudentCommand(string firstName, string lastName, int gender, int age, string email, string country, string zipCode, string city, string state, string street, string number)
+        public UpdateStudentCommand(Guid id, string firstName, string lastName, int gender, int age, string email, string country, string zipCode, string city, string state, string street, string number)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Gender = gender;
@@ -19,7 +20,7 @@ namespace Students.CQRS.Commands
             Number = number;
         }
 
-        public Guid GeneratedId { get; set; }
+        public Guid Id { get; set; }
 
         public string FirstName { get; private set; }
         public string LastName { get; private set; }

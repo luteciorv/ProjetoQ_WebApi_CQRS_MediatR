@@ -2,7 +2,7 @@
 
 namespace Students.DTOs
 {
-    public record CreateStudentDto
+    public record UpdateStudentDto
     {
         [Required(ErrorMessage = "Este campo é obrigatório")]
         [StringLength(25, ErrorMessage = "Número de caracteres excedido")]

@@ -12,5 +12,10 @@
         public bool Confirmed { get; private set; }
 
         public void Confirm() => Confirmed = true;
+
+        internal void Update(string email)
+        {
+            Address = email;
+        }
     }
 }

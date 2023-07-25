@@ -26,7 +26,7 @@ namespace Students.CQRS.Handlers
             _studentRepository.Add(student);
             await _studentRepository.SaveAsync();
 
-            request.Id = student.Id;
+            request.GeneratedId = student.Id;
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using MediatR;
 using Students.CQRS.Queries;
-using Students.Entities;
+using Students.DTOs;
+using Students.Extensions;
 using Students.Interfaces;
 
 namespace Students.CQRS.Handlers
 {
-    public class GetStudentsHandler : IRequestHandler<GetStudentsQuery, IReadOnlyCollection<Student>>
+    public class GetStudentsHandler : IRequestHandler<GetStudentsQuery, IReadOnlyCollection<ReadStudentDto>>
     {
         private readonly IStudentRepository _studentRepository;
 
@@ -14,9 +15,10 @@ namespace Students.CQRS.Handlers
             _studentRepository = studentRepository;
         }
 
-        public async Task<IReadOnlyCollection<Student>> Handle(GetStudentsQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<ReadStudentDto>> Handle(GetStudentsQuery request, CancellationToken cancellationToken)
         {
-            return await _studentRepository.GetAllAsync();
+            var students = await _studentRepository.GetAllAsync();
+            return students.Where(s => s.Activated).Select(s => s.MapToReadStudentDto()).ToList();
         }
     }
 }

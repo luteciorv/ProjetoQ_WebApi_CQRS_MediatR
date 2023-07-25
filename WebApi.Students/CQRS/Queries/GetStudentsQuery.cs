@@ -1,10 +1,9 @@
 ﻿using MediatR;
-using Students.Entities;
+using Students.DTOs;
 
 namespace Students.CQRS.Queries
 {
-    public class GetStudentsQuery : IRequest<IReadOnlyCollection<Student>>
+    public class GetStudentsQuery : IRequest<IReadOnlyCollection<ReadStudentDto>>
     {
-
     }
 }

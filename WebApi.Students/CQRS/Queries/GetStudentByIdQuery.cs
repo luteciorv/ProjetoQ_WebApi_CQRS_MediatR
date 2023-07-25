@@ -1,10 +1,15 @@
 ﻿using MediatR;
-using Students.Entities;
+using Students.DTOs;
 
 namespace Students.CQRS.Queries
 {
-    public class GetStudentByIdQuery : IRequest<Student>
+    public class GetStudentByIdQuery : IRequest<ReadStudentDto>
     {
-        public Guid Id { get; set; }
+        public GetStudentByIdQuery(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; private set; }
     }
 }
